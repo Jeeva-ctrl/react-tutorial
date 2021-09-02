@@ -1,16 +1,31 @@
-import React from "react";
-import Test from './dangerouslySetHtml'
-import {CustomTextInput , CustomFunctionalTextInput , Parent} from './ref';
-import "./style.css";
+import React from 'react';
+import Test from './dangerouslySetHtml';
+import {
+  CustomTextInput,
+  FancyButton,
+  CustomFunctionalTextInput,
+  Parent
+} from './ref';
+import './style.css';
 
 export default function App() {
+  // You can now get a ref directly to the DOM button:
+  const ref = React.createRef();
   return (
     <div>
       <h1>Hello StackBlitz!</h1>
-      <Test/>
-      <CustomTextInput/>
-      <CustomFunctionalTextInput/>
-      <Parent/>
+      <Test />
+      <CustomTextInput />
+      <CustomFunctionalTextInput />
+      <Parent />
+      <FancyButton ref={ref}>Click me!</FancyButton>
+      <button
+        onClick={e => {
+          console.log('r', ref.current);
+        }}
+      >
+        Focus{' '}
+      </button>
     </div>
   );
 }

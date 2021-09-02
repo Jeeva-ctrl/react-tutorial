@@ -61,4 +61,13 @@ class Parent extends React.Component {
   }
 }
 
-export { CustomTextInput, CustomFunctionalTextInput, Parent };
+
+const FancyButton = React.forwardRef((props, ref) => (
+  <button ref={ref} className="FancyButton">
+    {props.children}
+  </button>
+));
+
+
+
+export { CustomTextInput,FancyButton, CustomFunctionalTextInput, Parent };
