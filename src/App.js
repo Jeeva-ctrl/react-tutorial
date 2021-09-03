@@ -6,6 +6,8 @@ import {
   CustomFunctionalTextInput,
   Parent
 } from './ref';
+import  {CalculateFactorial} from './useMemo';
+import  {Factorial} from './factorial';
 import './style.css';
 
 export default function App() {
@@ -26,6 +28,11 @@ export default function App() {
       >
         Focus{' '}
       </button>
+      Use Memo :
+
+      <CalculateFactorial/>
+
+      <Factorial number={4}/>
     </div>
   );
 }
