@@ -16,10 +16,11 @@ function reducer(state, action) {
 export function Counter() {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <>
+    <div>
+      <br/>
       Count: {state.count}
       <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
       <button onClick={() => dispatch({ type: 'increment' })}>+</button>
-    </>
+    </div>
   );
 }
