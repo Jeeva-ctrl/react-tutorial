@@ -6,14 +6,29 @@ import {
   CustomFunctionalTextInput,
   Parent
 } from './ref';
-import  {CalculateFactorial} from './useMemo';
-import  {Factorial} from './factorial';
-import  { ParentComp ,MyButton } from './reactClone';
+import { CalculateFactorial } from './useMemo';
+import { Factorial } from './factorial';
+import { ParentComp, MyButton } from './reactClone';
 import './style.css';
+import Context from './contextApi';
+
+const themes = {
+  light: {
+    foreground: '#000000',
+    background: '#eeeeee'
+  },
+  dark: {
+    foreground: '#ffffff',
+    background: '#222222'
+  }
+};
+
+export const ThemeContext = React.createContext(themes.light);
 
 export default function App() {
   // You can now get a ref directly to the DOM button:
   const ref = React.createRef();
+  const [theme, setWhiteTheme] = React.useState(false);
   return (
     <div>
       <h1>Hello StackBlitz!</h1>
@@ -30,16 +45,17 @@ export default function App() {
         Focus{' '}
       </button>
       Use Memo :
-
-      <CalculateFactorial/>
-
-      <Factorial number={4}/>
-
+      <CalculateFactorial />
+      <Factorial number={4} />
       <ParentComp>
-        <MyButton/>
-        <br></br>
-        <MyButton/>
+        <MyButton />
+        <br />
+        <MyButton />
       </ParentComp>
+      <ThemeContext.Provider value={theme ? themes.light : themes.dark}>
+        <Context />
+      </ThemeContext.Provider>
+      <button onClick={e => setWhiteTheme(!theme)}>Set White theme</button>
     </div>
   );
 }
