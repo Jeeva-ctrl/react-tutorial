@@ -11,6 +11,7 @@ import { Factorial } from './factorial';
 import { ParentComp, MyButton } from './reactClone';
 import './style.css';
 import Context from './contextApi';
+import  {Counter} from './usereducer'
 
 const themes = {
   light: {
@@ -56,6 +57,8 @@ export default function App() {
         <Context />
       </ThemeContext.Provider>
       <button onClick={e => setWhiteTheme(!theme)}>Set White theme</button>
+
+      <Counter/>
     </div>
   );
 }
