@@ -8,6 +8,7 @@ import {
 } from './ref';
 import  {CalculateFactorial} from './useMemo';
 import  {Factorial} from './factorial';
+import  { ParentComp ,MyButton } from './reactClone';
 import './style.css';
 
 export default function App() {
@@ -33,6 +34,12 @@ export default function App() {
       <CalculateFactorial/>
 
       <Factorial number={4}/>
+
+      <ParentComp>
+        <MyButton/>
+        <br></br>
+        <MyButton/>
+      </ParentComp>
     </div>
   );
 }
