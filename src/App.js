@@ -4,24 +4,24 @@ import {
   CustomTextInput,
   FancyButton,
   CustomFunctionalTextInput,
-  Parent
+  Parent,
 } from './ref';
 import { CalculateFactorial } from './useMemo';
 import { Factorial } from './factorial';
 import { ParentComp, MyButton } from './reactClone';
 import './style.css';
-import Context from './contextApi';
-import  {Counter} from './usereducer'
+import Context, { ContextWrapper } from './contextApi';
+import { Counter } from './usereducer';
 
 const themes = {
   light: {
     foreground: '#000000',
-    background: '#eeeeee'
+    background: '#eeeeee',
   },
   dark: {
     foreground: '#ffffff',
-    background: '#222222'
-  }
+    background: '#222222',
+  },
 };
 
 export const ThemeContext = React.createContext(themes.light);
@@ -31,7 +31,7 @@ export default function App() {
   const ref = React.createRef();
   const [theme, setWhiteTheme] = React.useState(false);
   return (
-    <div>
+    <ThemeContext.Provider value={theme ? themes.light : themes.dark}>
       <h1>Hello StackBlitz!</h1>
       <Test />
       <CustomTextInput />
@@ -39,7 +39,7 @@ export default function App() {
       <Parent />
       <FancyButton ref={ref}>Click me!</FancyButton>
       <button
-        onClick={e => {
+        onClick={(e) => {
           console.log('r', ref.current);
         }}
       >
@@ -49,16 +49,15 @@ export default function App() {
       <CalculateFactorial />
       <Factorial number={4} />
       <ParentComp>
-        <MyButton />
+        <ContextWrapper>
+          <MyButton />
+        </ContextWrapper>
         <br />
         <MyButton />
       </ParentComp>
-      <ThemeContext.Provider value={theme ? themes.light : themes.dark}>
-        <Context />
-      </ThemeContext.Provider>
-      <button onClick={e => setWhiteTheme(!theme)}>Set White theme</button>
-
-      <Counter/>
-    </div>
+      <Context />
+      <button onClick={(e) => setWhiteTheme(!theme)}>Set White theme</button>
+      <Counter />
+    </ThemeContext.Provider>
   );
 }

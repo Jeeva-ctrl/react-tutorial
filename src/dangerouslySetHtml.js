@@ -1,7 +1,9 @@
 import React from 'react';
 import DOMPurify from 'dompurify';
+import { ContextWrapper } from './contextApi';
 
-const Test = () => {
+const Test = (props) => {
+  console.log('test', props);
   const data = `lorem <b onmouseover="alert('mouseover');">ipsum</b>`;
   const tempData = `lorem <b onmouseover="alert('mouseover');">ipsum</b>`;
 
@@ -14,7 +16,7 @@ const Test = () => {
   );
 };
 
-export default Test;
+export default ContextWrapper(Test);
 
 /*
 

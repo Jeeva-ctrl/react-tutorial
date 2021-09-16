@@ -10,7 +10,7 @@ class ParentComp extends React.Component {
     return (
       <div>
         {React.Children.map(this.props.children, child => {
-          return React.cloneElement(child, { newProp }, null);
+          return React.cloneElement(child, { newProp, }, null);
         })}
       </div>
     );
@@ -19,7 +19,7 @@ class ParentComp extends React.Component {
 // The child component
 class MyButton extends React.Component {
   render() {
-    return <button style={{ color: this.props.newProp }}>Hello World!</button>;
+    return (<><button style={{ color: this.props.newProp }}>Hello World!</button>{console.log("props",this.props)}</>);
   }
 }
 export { MyButton, ParentComp };
