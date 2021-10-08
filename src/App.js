@@ -12,6 +12,7 @@ import { ParentComp, MyButton } from './reactClone';
 import './style.css';
 import Context, { ContextWrapper } from './contextApi';
 import { Counter } from './usereducer';
+import ButtonSpinner from './buttonSpinner/index';
 
 const themes = {
   light: {
@@ -58,6 +59,9 @@ export default function App() {
       <Context />
       <button onClick={(e) => setWhiteTheme(!theme)}>Set White theme</button>
       <Counter />
+      <div style={{border:'1px solid black', padding:"10px"}}>Loading spinner in button
+      <ButtonSpinner />
+      </div>
     </ThemeContext.Provider>
   );
 }
