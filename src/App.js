@@ -1,4 +1,5 @@
 import React from 'react';
+import './ployfill.js'
 import Test from './dangerouslySetHtml';
 import {
   CustomTextInput,
