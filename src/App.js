@@ -14,6 +14,7 @@ import './style.css';
 import Context, { ContextWrapper } from './contextApi';
 import { Counter } from './usereducer';
 import ButtonSpinner from './buttonSpinner/index';
+import SearchBar from './debouncing'
 
 const themes = {
   light: {
@@ -63,6 +64,7 @@ export default function App() {
       <div style={{border:'1px solid black', padding:"10px"}}>Loading spinner in button
       <ButtonSpinner />
       </div>
+      <SearchBar/>
     </ThemeContext.Provider>
   );
 }
